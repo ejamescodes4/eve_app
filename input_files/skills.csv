@@ -1,0 +1,31 @@
+skill_name, skill_level, skill_bonus_name, skill_bonus_value,researched
+Module Invention Principles,1,Reverse Engineering Success Rate,0,True
+Module Invention Principles,2,Reverse Engineering Success Rate,.06,True
+Module Invention Principles,3,Reverse Engineering Success Rate,.12,True
+Module Invention Principles,4,Reverse Engineering Success Rate,.18,True
+Module Invention Principles,5,Reverse Engineering Success Rate,.25,True
+Advanced Invention Principles,1,Reverse Engineering Success Rate,0,True
+Advanced Invention Principles,2,Reverse Engineering Success Rate,0,True
+Advanced Invention Principles,3,Reverse Engineering Success Rate,.05,True
+Advanced Invention Principles,4,Reverse Engineering Success Rate,.10,True
+Advanced Invention Principles,5,Reverse Engineering Success Rate,.15,True
+Expert Invention Principles,1,Reverse Engineering Success Rate,0,True
+Expert Invention Principles,2,Reverse Engineering Success Rate,0,True
+Expert Invention Principles,3,Reverse Engineering Success Rate,.03,True
+Expert Invention Principles,4,Reverse Engineering Success Rate,.06,False
+Expert Invention Principles,5,Reverse Engineering Success Rate,.10,False
+Module Invention Specialization,1,Reverse Engineering Success Rate,.03,True
+Module Invention Specialization,2,Reverse Engineering Success Rate,.06,True
+Module Invention Specialization,3,Reverse Engineering Success Rate,.09,True
+Module Invention Specialization,4,Reverse Engineering Success Rate,.12,True
+Module Invention Specialization,5,Reverse Engineering Success Rate,.15,False
+Advanced Module Invention Specialization,1,Reverse Engineering Success Rate,.03,True
+Advanced Module Invention Specialization,2,Reverse Engineering Success Rate,.06,True
+Advanced Module Invention Specialization,3,Reverse Engineering Success Rate,.09,True
+Advanced Module Invention Specialization,4,Reverse Engineering Success Rate,.12,True
+Advanced Module Invention Specialization,5,Reverse Engineering Success Rate,.15,False
+Expert Module Invention Specialization,1,Reverse Engineering Success Rate,.04,False
+Expert Module Invention Specialization,2,Reverse Engineering Success Rate,.08,False
+Expert Module Invention Specialization,3,Reverse Engineering Success Rate,.12,False
+Expert Module Invention Specialization,4,Reverse Engineering Success Rate,.16,False
+Expert Module Invention Specialization,5,Reverse Engineering Success Rate,.20,False
