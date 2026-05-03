@@ -2,6 +2,15 @@ item_name, base_success_rate, attempt_cost
 Gist B-Type Large Autocannon,0.25, 150000000
 Gist A-Type Large Autocannon,0.18, 200000000
 Gist X-Type Large Autocannon,0.1, 200000000
-Gist B-Type Gyrostabilizer,0.25, 50000000
-Gist A-Type Gyrostabilizer,0.18, 250000000
-Gist X-Type Gyrostabilizer,0.15, 300000000
+Gistum B-Type Gyrostabilizer,0.25, 50000000
+Gistum A-Type Gyrostabilizer,0.18, 55000000
+Gistum X-Type Gyrostabilizer,0.1, 65000000
+Gistum B-Type Reactive Sheild Hardener,0.25, 25000000
+Gistum A-Type Reactive Sheild Hardener,0.18, 55000000
+Gistum X-Type Reactive Sheild Hardener,0.1, 65000000
+Gist B-Type Adaptive Invulnerability Field,0.25, 50000000
+Gist A-Type Adaptive Invulnerability Field,0.18, 60000000
+Gist X-Type Adaptive Invulnerability Field,0.1, 65000000
+Gist B-Type Large Microwarpdrive, 0.25, 400000000
+Gist A-Type Large Microwarpdrive, 0.18, 450000000
+Gist X-Type Large Microwarpdrive, 0.1, 550000000

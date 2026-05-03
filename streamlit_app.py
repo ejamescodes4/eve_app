@@ -40,7 +40,7 @@ def load_inputs():
 
 
 def format_isk(value):
-    if pd.isna(value):
+    if pd.isna(value) or np.isinf(value):
         return "Missing price"
     absolute_value = abs(value)
     if absolute_value >= 1_000_000_000:
@@ -78,7 +78,29 @@ def format_display_table(df):
 
 def pretty_column_name(column_name):
     if column_name == "expected_cost_per_success":
-        return "Cost Of Success"
+        return "Cost of Success"
+    custom_names = {
+        "output_item_name": "Output Item",
+        "input_item_name": "Input Item",
+        "input_item_qty": "Qty",
+        "unit_price": "Unit Price",
+        "line_cost": "Line Cost",
+        "base_success_rate": "Base Success Rate",
+        "success_probability": "Success Rate",
+        "total_skill_bonus": "Skill Bonus",
+        "skill_multiplier": "Skill Multiplier",
+        "decryptor_success_bonus": "Decryptor Bonus",
+        "success_rate": "Final Success Rate",
+        "materials_cost": "Materials Cost",
+        "attempt_cost": "Attempt Cost",
+        "total_attempt_cost": "Total Attempt Cost",
+        "output_price": "Sell Price",
+        "expected_revenue": "Probability Weighted Revenue",
+        "expected_profit": "Profit Per Success",
+        "estimated_input_price": "Estimated Input Price",
+    }
+    if column_name in custom_names:
+        return custom_names[column_name]
     return column_name.replace("_", " ").title()
 
 
@@ -262,29 +284,39 @@ def show_metric_row(model_results):
     metric_cols[1].metric("Materials Cost", format_isk(row["materials_cost"]))
     metric_cols[2].metric("Total Attempt Cost", format_isk(row["total_attempt_cost"]))
     metric_cols[3].metric("Cost of Success", format_isk(row["expected_cost_per_success"]))
-    metric_cols[4].metric("Expected Profit", format_isk(row["expected_profit"]))
+    metric_cols[4].metric(
+        "Profit Per Success",
+        format_isk(row["expected_profit"]),
+        delta="Profitable" if row["expected_profit"] > 0 else "Unprofitable",
+        delta_color="normal" if row["expected_profit"] > 0 else "inverse",
+    )
+
+
+def show_missing_price_warning(recipe_detail, model_results):
+    missing_recipe_prices = recipe_detail[recipe_detail["unit_price"].isna()]["input_item_name"].tolist()
+    output_missing = pd.isna(model_results.iloc[0]["output_price"])
+    if missing_recipe_prices or output_missing:
+        missing_items = missing_recipe_prices.copy()
+        if output_missing:
+            missing_items.append(model_results.iloc[0]["output_item_name"])
+        st.warning(
+            "Missing prices for: "
+            + ", ".join(sorted(set(missing_items)))
+            + ". Add prices in the sidebar to get accurate results."
+        )
 
 
 def main():
-    st.title("EVE Reverse Engineering Model")
-    st.caption("Starter Streamlit app backed by the CSV files in input_files.")
+    st.title("EVE Reverse Engineering Profit Calculator")
+    st.caption("Estimate reverse engineering success rates, costs, and profit per successful output.")
 
     skills, base_rates, recipes, decryptors, prices = load_inputs()
     initialize_price_state(prices)
 
     with st.sidebar:
-        st.header("Inputs")
+        st.header("Model Controls")
         output_items = base_rates["item_name"].sort_values().tolist()
         selected_output_item = st.selectbox("Output item", output_items)
-        price_spread_capture = st.slider(
-            "Input price spread capture",
-            min_value=0.0,
-            max_value=1.0,
-            value=0.20,
-            step=0.05,
-            format="%.2f",
-        )
-        st.caption("Input price = buy price + this fraction of the buy/sell spread.")
 
         decryptor_options = ["None"] + decryptors["item_name"].sort_values().tolist()
         selected_decryptor_option = st.selectbox(
@@ -294,42 +326,53 @@ def main():
         )
         selected_decryptor = None if selected_decryptor_option == "None" else selected_decryptor_option
 
+        with st.expander("Pricing Assumptions", expanded=True):
+            price_spread_capture = st.slider(
+                "Input price spread capture",
+                min_value=0.0,
+                max_value=1.0,
+                value=0.20,
+                step=0.05,
+                format="%.2f",
+            )
+            st.caption("Input price = buy price + this fraction of the buy/sell spread.")
+
         relevant_items = relevant_price_items(recipes, selected_output_item, selected_decryptor)
         price_override_rows = prices[prices["item_name"].isin(relevant_items)][
             ["item_name", "buy_price", "sell_price"]
         ].copy()
 
-        st.header("Price Overrides")
-        st.caption("Edit prices here to test scenarios. These changes do not update the CSV.")
-        for _, price_row in price_override_rows.iterrows():
-            st.write(price_row["item_name"])
-            price_columns = st.columns(2)
-            price_columns[0].number_input(
-                "Buy Price",
-                min_value=0,
-                step=1,
-                key=session_key_from_name("buy_price", price_row["item_name"]),
-            )
-            price_columns[1].number_input(
-                "Sell Price",
-                min_value=0,
-                step=1,
-                key=session_key_from_name("sell_price", price_row["item_name"]),
-            )
+        with st.expander("Price Overrides", expanded=False):
+            st.caption("Edit prices here to test scenarios. These changes do not update the CSV.")
+            for _, price_row in price_override_rows.iterrows():
+                st.markdown(f"**{price_row['item_name']}**")
+                price_columns = st.columns(2)
+                price_columns[0].number_input(
+                    "Buy Price",
+                    min_value=0,
+                    step=1,
+                    key=session_key_from_name("buy_price", price_row["item_name"]),
+                )
+                price_columns[1].number_input(
+                    "Sell Price",
+                    min_value=0,
+                    step=1,
+                    key=session_key_from_name("sell_price", price_row["item_name"]),
+                )
         price_overrides = price_overrides_from_state(prices)
 
-        st.header("Skill Selection")
-        defaults_by_skill = default_skill_levels(skills)
-        selected_skill_levels = {}
-        for skill_name in sorted(skills["skill_name"].unique()):
-            selected_skill_levels[skill_name] = st.number_input(
-                skill_name,
-                min_value=0,
-                max_value=5,
-                value=int(defaults_by_skill.get(skill_name, 0)),
-                step=1,
-                key=session_key_from_name("skill_level", skill_name),
-            )
+        with st.expander("Skill Levels", expanded=False):
+            defaults_by_skill = default_skill_levels(skills)
+            selected_skill_levels = {}
+            for skill_name in sorted(skills["skill_name"].unique()):
+                selected_skill_levels[skill_name] = st.number_input(
+                    skill_name,
+                    min_value=0,
+                    max_value=5,
+                    value=int(defaults_by_skill.get(skill_name, 0)),
+                    step=1,
+                    key=session_key_from_name("skill_level", skill_name),
+                )
 
     prices = apply_price_overrides(prices, price_overrides)
     prices = add_estimated_prices(prices, price_spread_capture)
@@ -353,43 +396,49 @@ def main():
     )
     selected_prices = prices[prices["item_name"].isin(relevant_items)].copy()
 
+    st.subheader(selected_output_item)
+    st.caption(f"Decryptor: {selected_decryptor or 'None'}")
     show_metric_row(model_results)
+    show_missing_price_warning(recipe_detail, model_results)
 
     st.divider()
 
-    tab_model, tab_recipe, tab_skills, tab_prices, tab_raw = st.tabs([
-        "Model Output",
+    tab_summary, tab_recipe, tab_prices, tab_skills, tab_raw = st.tabs([
+        "Summary",
         "Recipe Cost Detail",
-        "Active Skills",
         "Prices",
+        "Active Skills",
         "Raw Inputs",
     ])
 
-    with tab_model:
+    with tab_summary:
         st.subheader("Success Rate Breakdown")
         st.dataframe(format_display_table(success_breakdown), use_container_width=True, hide_index=True)
-        st.subheader("Expected Value")
+        st.subheader("Profit Breakdown")
         st.dataframe(format_display_table(model_results), use_container_width=True, hide_index=True)
 
     with tab_recipe:
         st.subheader(f"Recipe Cost Detail: {selected_output_item}")
         st.dataframe(format_display_table(recipe_detail), use_container_width=True, hide_index=True)
 
-    with tab_skills:
-        st.subheader("Selected Skill Levels")
-        st.dataframe(
-            format_display_table(active_skills[["skill_name", "skill_level", "skill_bonus_value"]]),
-            use_container_width=True,
-            hide_index=True,
-        )
-
     with tab_prices:
-        st.subheader("Market Prices")
+        st.subheader("Relevant Market Prices")
         st.dataframe(
             format_display_table(selected_prices[["item_name", "buy_price", "sell_price", "estimated_input_price", "date"]]),
             use_container_width=True,
             hide_index=True,
         )
+
+    with tab_skills:
+        st.subheader("Selected Skill Levels")
+        if active_skills.empty:
+            st.info("No active skill bonuses selected.")
+        else:
+            st.dataframe(
+                format_display_table(active_skills[["skill_name", "skill_level", "skill_bonus_value"]]),
+                use_container_width=True,
+                hide_index=True,
+            )
 
     with tab_raw:
         st.subheader("Base Rates")

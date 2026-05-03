@@ -20,24 +20,87 @@ Gist X-Type Large Autocannon, Large Device Compilation Optimization Medium, 78
 Gist X-Type Large Autocannon, Angel Device Construction Unit, 133
 Gist X-Type Large Autocannon, Minmatar Device Construction Unit, 5310
 Gist X-Type Large Autocannon, Decryptor, 24
-Gist B-Type Gyrostabilizer, Angel Data Compiler, 5
-Gist B-Type Gyrostabilizer, Gist C-Type Gyrostabilizer, 1
-Gist B-Type Gyrostabilizer, Small Device Improvement Medium, 811
-Gist B-Type Gyrostabilizer, Small Device Compilation Optimization Medium, 41
-Gist B-Type Gyrostabilizer, Angel Device Construction Unit, 41
-Gist B-Type Gyrostabilizer, Minmatar Device Construction Unit, 1622
-Gist B-Type Gyrostabilizer, Decryptor, 10
-Gist A-Type Gyrostabilizer, Angel Data Compiler, 10
-Gist A-Type Gyrostabilizer, Gist B-Type Gyrostabilizer, 1
-Gist A-Type Gyrostabilizer, Small Device Improvement Medium, 929
-Gist A-Type Gyrostabilizer, Small Device Compilation Optimization Medium, 47
-Gist A-Type Gyrostabilizer, Angel Device Construction Unit, 47
-Gist A-Type Gyrostabilizer, Minmatar Device Construction Unit, 1857
-Gist A-Type Gyrostabilizer, Decryptor, 12
-Gist X-Type Gyrostabilizer, Angel Data Compiler, 20
-Gist X-Type Gyrostabilizer, Gist A-Type Gyrostabilizer, 1
-Gist X-Type Gyrostabilizer, Small Device Improvement Medium, 1054
-Gist X-Type Gyrostabilizer, Small Device Compilation Optimization Medium, 53
-Gist X-Type Gyrostabilizer, Angel Device Construction Unit, 53
-Gist X-Type Gyrostabilizer, Minmatar Device Construction Unit, 2107
-Gist X-Type Gyrostabilizer, Decryptor, 16
+Gistum B-Type Gyrostabilizer, Angel Data Compiler, 5
+Gistum B-Type Gyrostabilizer, Gistum C-Type Gyrostabilizer, 1
+Gistum B-Type Gyrostabilizer, Small Device Improvement Medium, 811
+Gistum B-Type Gyrostabilizer, Small Device Compilation Optimization Medium, 41
+Gistum B-Type Gyrostabilizer, Angel Device Construction Unit, 41
+Gistum B-Type Gyrostabilizer, Minmatar Device Construction Unit, 1622
+Gistum B-Type Gyrostabilizer, Decryptor, 10
+Gistum A-Type Gyrostabilizer, Angel Data Compiler, 10
+Gistum A-Type Gyrostabilizer, Gistum B-Type Gyrostabilizer, 1
+Gistum A-Type Gyrostabilizer, Small Device Improvement Medium, 929
+Gistum A-Type Gyrostabilizer, Small Device Compilation Optimization Medium, 47
+Gistum A-Type Gyrostabilizer, Angel Device Construction Unit, 47
+Gistum A-Type Gyrostabilizer, Minmatar Device Construction Unit, 1857
+Gistum A-Type Gyrostabilizer, Decryptor, 12
+Gistum X-Type Gyrostabilizer, Angel Data Compiler, 20
+Gistum X-Type Gyrostabilizer, Gistum A-Type Gyrostabilizer, 1
+Gistum X-Type Gyrostabilizer, Small Device Improvement Medium, 1054
+Gistum X-Type Gyrostabilizer, Small Device Compilation Optimization Medium, 53
+Gistum X-Type Gyrostabilizer, Angel Device Construction Unit, 53
+Gistum X-Type Gyrostabilizer, Minmatar Device Construction Unit, 2107
+Gistum X-Type Gyrostabilizer, Decryptor, 16
+Gistum B-Type Reactive Sheild Hardener, Angel Data Compiler, 5
+Gistum B-Type Reactive Sheild Hardener, Gistum C-Type Reactive Sheild Hardener, 1
+Gistum B-Type Reactive Sheild Hardener, Small Device Improvement Medium, 341
+Gistum B-Type Reactive Sheild Hardener, Small Device Compilation Optimization Medium, 18
+Gistum B-Type Reactive Sheild Hardener, Angel Device Construction Unit, 19
+Gistum B-Type Reactive Sheild Hardener, Minmatar Device Construction Unit, 682
+Gistum B-Type Reactive Sheild Hardener, Decryptor, 8
+Gistum A-Type Reactive Sheild Hardener, Angel Data Compiler, 10
+Gistum A-Type Reactive Sheild Hardener, Gistum B-Type Reactive Sheild Hardener, 1
+Gistum A-Type Reactive Sheild Hardener, Small Device Improvement Medium, 395
+Gistum A-Type Reactive Sheild Hardener, Small Device Compilation Optimization Medium, 20
+Gistum A-Type Reactive Sheild Hardener, Angel Device Construction Unit, 20
+Gistum A-Type Reactive Sheild Hardener, Minmatar Device Construction Unit, 789
+Gistum A-Type Reactive Sheild Hardener, Decryptor, 9
+Gistum X-Type Reactive Sheild Hardener, Angel Data Compiler, 20
+Gistum X-Type Reactive Sheild Hardener, Gistum A-Type Reactive Sheild Hardener, 1
+Gistum X-Type Reactive Sheild Hardener, Small Device Improvement Medium, 447
+Gistum X-Type Reactive Sheild Hardener, Small Device Compilation Optimization Medium, 23
+Gistum X-Type Reactive Sheild Hardener, Angel Device Construction Unit, 23
+Gistum X-Type Reactive Sheild Hardener, Minmatar Device Construction Unit, 893
+Gistum X-Type Reactive Sheild Hardener, Decryptor, 12
+Gist B-Type Adaptive Invulnerability Field, Angel Data Compiler, 5
+Gist B-Type Adaptive Invulnerability Field, Gist C-Type Adaptive Invulnerability Field, 1
+Gist B-Type Adaptive Invulnerability Field, Small Device Improvement Medium, 852
+Gist B-Type Adaptive Invulnerability Field, Small Device Compilation Optimization Medium, 43
+Gist B-Type Adaptive Invulnerability Field, Angel Device Construction Unit, 43
+Gist B-Type Adaptive Invulnerability Field, Minmatar Device Construction Unit, 1703
+Gist B-Type Adaptive Invulnerability Field, Decryptor, 10
+Gist A-Type Adaptive Invulnerability Field, Angel Data Compiler, 10
+Gist A-Type Adaptive Invulnerability Field, Gist B-Type Adaptive Invulnerability Field, 1
+Gist A-Type Adaptive Invulnerability Field, Small Device Improvement Medium, 986
+Gist A-Type Adaptive Invulnerability Field, Small Device Compilation Optimization Medium, 50
+Gist A-Type Adaptive Invulnerability Field, Angel Device Construction Unit, 50
+Gist A-Type Adaptive Invulnerability Field, Minmatar Device Construction Unit, 1971
+Gist A-Type Adaptive Invulnerability Field, Decryptor, 12
+Gist X-Type Adaptive Invulnerability Field, Angel Data Compiler, 20
+Gist X-Type Adaptive Invulnerability Field, Gist A-Type Adaptive Invulnerability Field, 1
+Gist X-Type Adaptive Invulnerability Field, Small Device Improvement Medium, 1116
+Gist X-Type Adaptive Invulnerability Field, Small Device Compilation Optimization Medium, 56
+Gist X-Type Adaptive Invulnerability Field, Angel Device Construction Unit, 56
+Gist X-Type Adaptive Invulnerability Field, Minmatar Device Construction Unit, 2231
+Gist X-Type Adaptive Invulnerability Field, Decryptor, 16
+Gist B-Type Large Microwarpdrive, Angel Data Compiler, 20
+Gist B-Type Large Microwarpdrive, Gist C-Type Large Microwarpdrive, 1
+Gist B-Type Large Microwarpdrive, Large Device Improvement Medium, 2908
+Gist B-Type Large Microwarpdrive, Large Device Compilation Optimization Medium, 250
+Gist B-Type Large Microwarpdrive, Angel Device Construction Unit, 146
+Gist B-Type Large Microwarpdrive, Minmatar Device Construction Unit, 9994
+Gist B-Type Large Microwarpdrive, Decryptor, 21
+Gist A-Type Large Microwarpdrive, Angel Data Compiler, 40
+Gist A-Type Large Microwarpdrive, Gist B-Type Large Microwarpdrive, 1
+Gist A-Type Large Microwarpdrive, Large Device Improvement Medium, 3475
+Gist A-Type Large Microwarpdrive, Large Device Compilation Optimization Medium, 299
+Gist A-Type Large Microwarpdrive, Angel Device Construction Unit, 1174
+Gist A-Type Large Microwarpdrive, Minmatar Device Construction Unit, 11943
+Gist A-Type Large Microwarpdrive, Decryptor, 25
+Gist X-Type Large Microwarpdrive, Angel Data Compiler, 80
+Gist X-Type Large Microwarpdrive, Gist A-Type Large Microwarpdrive, 1
+Gist X-Type Large Microwarpdrive, Large Device Improvement Medium, 4414
+Gist X-Type Large Microwarpdrive, Large Device Compilation Optimization Medium, 380
+Gist X-Type Large Microwarpdrive, Angel Device Construction Unit, 221
+Gist X-Type Large Microwarpdrive, Minmatar Device Construction Unit, 15168
+Gist X-Type Large Microwarpdrive, Decryptor, 34
